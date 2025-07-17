@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習タイマー</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4A90E2"/>
+</head>
+<body class="light-theme">
+    <div class="container">
+        <div class="header">
+            <button id="settings-btn" class="icon-btn">⚙️</button>
+            <button id="theme-toggle-btn" class="icon-btn">🌙</button>
+        </div>
+
+        <div id="total-time-display-main">
+            今日の総学習時間: <span>00:00:00</span>
+            <button id="reset-total-time-btn" class="icon-btn small-icon">🔄</button>
+        </div>
+
+        <div class="sets-display">
+            セット: <span id="current-set">0</span> / <span id="total-sets">4</span>
+        </div>
+
+        <div class="timer-wrapper">
+            <div id="pomodoro-timer" class="timer-box active">
+                <div class="timer-label">集中</div>
+                <div id="pomodoro-display" class="timer-display">25:00</div>
+            </div>
+            <div id="break-timer" class="timer-box">
+                <div class="timer-label">休憩</div>
+                <div id="break-display" class="timer-display">05:00</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="start-btn">スタート</button>
+            <button id="stop-btn" style="display: none;">ストップ</button>
+            <button id="reset-btn">リセット</button>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2>設定</h2>
+            <div class="setting-item">
+                <label for="pomodoro-duration">集中時間 (分):</label>
+                <input type="number" id="pomodoro-duration" min="1" value="25">
+            </div>
+            <div class="setting-item">
+                <label for="break-duration">休憩時間 (分):</label>
+                <input type="number" id="break-duration" min="1" value="5">
+            </div>
+            <div class="setting-item">
+                <label for="sets-input">セット数:</label>
+                <input type="number" id="sets-input" min="1" value="4">
+            </div>
+            <div class="time-preview-area">
+                <div class="setting-total-time">
+                    予定総学習時間: <span id="total-study-time-preview">1時間40分</span>
+                </div>
+                <div class="setting-total-time">
+                    トータルタイム: <span id="total-session-time-preview">1時間55分</span>
+                </div>
+            </div>
+            <button id="save-settings-btn">保存して閉じる</button>
+        </div>
+    </div>
+
+    <audio id="focus-end-sound" src="https://soundeffect-lab.info/sound/button/mp3/decision22.mp3" preload="auto"></audio>
+    <audio id="break-end-sound" src="https://soundeffect-lab.info/sound/button/mp3/decision25.mp3" preload="auto"></audio>
+    <audio id="session-end-sound" src="https://soundeffect-lab.info/sound/anime/mp3/tada-1.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
