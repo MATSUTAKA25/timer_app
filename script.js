@@ -274,14 +274,6 @@ function loadTheme() {
 
 // --- イベントリスナー ---
 startBtn.addEventListener('click', startTimer);
-startBtn.addEventListener('click', () => {
-    focusEndSound.play().then(() => {
-        focusEndSound.pause();
-        focusEndSound.currentTime = 0;
-        console.log("音声許可済み");
-    }).catch(err => console.log("音声許可失敗:", err));
-});
-
 stopBtn.addEventListener('click', stopTimer);
 resetBtn.addEventListener('click', resetAll);
 settingsBtn.addEventListener('click', () => {
